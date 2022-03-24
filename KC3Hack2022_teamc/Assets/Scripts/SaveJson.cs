@@ -24,20 +24,10 @@ public class SaveJson : MonoBehaviour
         filePath = Application.persistentDataPath + "/" + ".savedata.json"; 
         save = new ItemDataList();
         ItemData testitem = new ItemData();
-        testitem.ItemName = "いちご";
-        testitem.ItemV = 3;
-        testitem.ItemY = 2022;
-        testitem.ItemM = 3;
-        testitem.ItemD = 22;
-        testitem.ItemND = 5;
-        Save(testitem);
-        Load();
-        Save(testitem);
     }
 
     public void Save(ItemData item)
     {
-
         save.itemDatas.Add(item);
 
         Debug.Log(filePath);
@@ -45,7 +35,6 @@ public class SaveJson : MonoBehaviour
         StreamWriter streamWriter = new StreamWriter(filePath);
         streamWriter.Write(json); streamWriter.Flush();
         streamWriter.Close();
-        
     }
 
     public ItemDataList Load()
