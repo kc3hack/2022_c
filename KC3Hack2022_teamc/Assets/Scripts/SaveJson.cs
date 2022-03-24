@@ -17,15 +17,15 @@ public class SaveJson : MonoBehaviour
     string filePath;
     ItemDataList save;
 
-
     void Awake()
     {
         //変数の初期化処理を行う
         filePath = Application.persistentDataPath + "/" + ".savedata.json"; 
         save = new ItemDataList();
-        ItemData testitem = new ItemData();
+        Load();
     }
 
+    //ItemDataを引数に呼び出すとListを更新しJsonに登録します
     public void Save(ItemData item)
     {
         save.itemDatas.Add(item);
@@ -37,7 +37,10 @@ public class SaveJson : MonoBehaviour
         streamWriter.Close();
     }
 
-    public ItemDataList Load()
+
+    //JsonからロードしてItemDataのListを返す
+    //Jsonファイルが存在しない場合はnullを返す
+    public List<ItemData> Load()
     { 
         if (File.Exists(filePath))
         {
@@ -47,7 +50,7 @@ public class SaveJson : MonoBehaviour
             streamReader.Close();
             save = JsonUtility.FromJson<ItemDataList>(data);
             Debug.Log(save.itemDatas);
-            return save;
+            return save.itemDatas;
         }
         return null;
     }
