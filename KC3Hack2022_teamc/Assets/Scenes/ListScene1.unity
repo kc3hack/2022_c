@@ -1170,8 +1170,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1762019969}
   m_HandleRect: {fileID: 1762019968}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.78212297
+  m_Value: 0.9999996
+  m_Size: 0.7821229
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1272,8 +1272,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 15
+    m_Font: {fileID: 12800000, guid: 47b9748dc9076ed4a84bbd122414d972, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1284,7 +1284,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u60C5\u5831"
+  m_Text: "\u4E00\u89A7"
 --- !u!222 &1252804161
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1672,7 +1672,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.4198113, g: 0.57117826, b: 1, a: 1}
+  m_Color: {r: 0.29411766, g: 0.61960787, b: 0.8, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
