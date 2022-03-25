@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/TZ/Scene/SampleScene.unity
-    guid: 0a68f3001192e004191105a1f2b29d08
+    path: Assets/Scenes/HomeScene.unity
+    guid: 0e14154b8ba1d494595903cc6a0fe63b
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
     guid: 788ef3e5468d63749b55a6ada642e83b
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RegisterScene.unity
     guid: ca0ef8b1c0b3e5e45ba2d32f7c9abfee
+  - enabled: 1
+    path: Assets/TZ/Scene/SampleScene.unity
+    guid: 0a68f3001192e004191105a1f2b29d08
   m_configObjects: {}

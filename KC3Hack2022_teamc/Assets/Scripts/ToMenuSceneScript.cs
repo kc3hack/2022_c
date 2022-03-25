@@ -9,6 +9,6 @@ public class ToMenuSceneScript : MonoBehaviour
     public void Select()
     {
         //ボタンが押されたときに呼び出される操作
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("HomeScene");
     }
 }
