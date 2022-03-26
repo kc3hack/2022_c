@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Time_Manager : MonoBehaviour
 {
-
     public Text text;
     public int nowY;
     public int nowM;
@@ -35,13 +34,12 @@ public class Time_Manager : MonoBehaviour
     }
 
     void Text_Now(){
-        text.text = nowY.ToString("0000") + "/" + nowM.ToString("00") + "/" + nowD.ToString("00");
+        if(text != null){
+            text.text = nowY.ToString("0000") + "/" + nowM.ToString("00") + "/" + nowD.ToString("00");
+        }
     }
 
     public void SettingPush(List<ItemData> itemDatas){
-        int ItemY = 2022;
-        int ItemM = 3;
-        int ItemD = 21;
         
         //　Androidチャンネルの登録
         //LocalPushNotification.RegisterChannel(引数1,引数２,引数３);
@@ -61,28 +59,36 @@ public class Time_Manager : MonoBehaviour
         //引数4　何秒後に表示させるか？
         //引数5　Androidで使用するチャンネルID　「Androidチャンネルの登録」で登録したチャンネルIDと合わせておく
         //注意　iOSは45秒経過後からしかプッシュ通知が表示されない        
-        LocalPushNotification.AddSchedule("プッシュ通知一つ目", "45秒経過", 1, new DateTime(ItemY, ItemM, ItemD), "channelId");
-        LocalPushNotification.AddSchedule("プッシュ通知二つ目", "60秒経過", 2, new DateTime(2022, 3, 21, 17, 40, 0), "channelId");
-        LocalPushNotification.AddSchedule("プッシュ通知三つ目", "75秒経過", 3, new DateTime(2022, 8, 21, 17, 50, 0), "channelId");
 
-        List<ItemData> SetItemList = new List<ItemData>(itemDatas);
-        SetItemList.Sort((a,b) => (b.ItemY*365 + b.ItemM*31 + b.ItemD) - (a.ItemY*365 + a.ItemM*31 + a.ItemD));
 
-        string ItemName = "";
+        List<ItemData> SetItemList = itemDatas;
+        SetItemList.Sort((a,b) => (a.ItemY*365 + a.ItemM*31 + a.ItemD) - (b.ItemY*365 + b.ItemM*31 + b.ItemD));
+
         int ItemCount = 0;
 
         while(SetItemList.Count > 0){
             if(nowY < SetItemList[0].ItemY || nowY == SetItemList[0].ItemY && nowM < SetItemList[0].ItemM || nowY == SetItemList[0].ItemY && nowM == SetItemList[0].ItemM && nowD < SetItemList[0].ItemD){
-                ItemName = SetItemList[0].ItemName;
-                ItemCount++;
-                int i = 0;
+                ItemCount += SetItemList[0].ItemV;
+                int i = 1;
                 while(i < SetItemList.Count){
-
+                    if (SetItemList[i].ItemY == SetItemList[0].ItemY && SetItemList[i].ItemM == SetItemList[0].ItemM && SetItemList[i].ItemD == SetItemList[0].ItemD){
+                        if(SetItemList[i].ItemND != 0){
+                            LocalPushNotification.AddSchedule("警告", SetItemList[i].ItemName + "の賞味期限があと" + SetItemList[i].ItemND + "日で切れます", 1, new DateTime(SetItemList[i].ItemY, SetItemList[i].ItemM, SetItemList[i].ItemD).AddDays(-1 * SetItemList[i].ItemND), "channelId");
+                        }
+                        SetItemList.RemoveAt(i);
+                    }else{
+                        i++;
+                    }
+                    ItemCount += SetItemList[i].ItemV;
                 }
             }
             if(ItemCount > 0){
-                LocalPushNotification.AddSchedule("賞味期限切れ", ItemName + "など" + ItemCount + "個の賞味期限が切れた食材があります", 1, new DateTime(ItemY, ItemM, ItemD), "channelId");
+                LocalPushNotification.AddSchedule("賞味期限切れ", SetItemList[0].ItemName + "など" + ItemCount + "個の賞味期限が切れた食材があります", 1, new DateTime(SetItemList[0].ItemY, SetItemList[0].ItemM, SetItemList[0].ItemD), "channelId");
             }
+            if(SetItemList[0].ItemND != 0){
+                LocalPushNotification.AddSchedule("警告", SetItemList[0].ItemName + "の賞味期限があと" + SetItemList[0].ItemND + "日で切れます", 1, new DateTime(SetItemList[0].ItemY, SetItemList[0].ItemM, SetItemList[0].ItemD).AddDays(-1 * SetItemList[0].ItemND), "channelId");
+            }
+            SetItemList.RemoveAt(0);
         }
         
     }

@@ -14,6 +14,7 @@ public class ItemDataList{
 
 public class SaveJson : MonoBehaviour
 {
+    public Time_Manager push;
     string filePath;
     ItemDataList saveItamData;
 
@@ -27,13 +28,20 @@ public class SaveJson : MonoBehaviour
     //ItemDataを引数に呼び出すとListを更新しJsonに登録します
     public void Save(ItemData item)
     {
-        saveItamData.itemDatas.Add(item);
-
-        Debug.Log(filePath);
+        if(item != null){saveItamData.itemDatas.Add(item);}
+        
         string json = JsonUtility.ToJson(saveItamData);
         StreamWriter streamWriter = new StreamWriter(filePath);
         streamWriter.Write(json); streamWriter.Flush();
         streamWriter.Close();
+        push.SettingPush(saveItamData.itemDatas);
+    }
+
+    public void Pop(int id, int value){
+        Load();
+        saveItamData.itemDatas[id].ItemV -= value;
+        if(saveItamData.itemDatas[id].ItemV <= 0){saveItamData.itemDatas.RemoveAt(id);}
+        Save(null);
     }
 
 
@@ -48,7 +56,6 @@ public class SaveJson : MonoBehaviour
             string data = streamReader.ReadToEnd();
             streamReader.Close();
             saveItamData = JsonUtility.FromJson<ItemDataList>(data);
-            Debug.Log(saveItamData.itemDatas);
             return saveItamData.itemDatas;
         }
         else{
