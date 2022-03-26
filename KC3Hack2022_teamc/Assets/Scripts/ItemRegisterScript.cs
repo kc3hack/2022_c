@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ItemRegisterScript : MonoBehaviour
 {
+    public Time_Manager time;
     //InputFieldを格納するための変数
     InputField infItemName;
     InputField infItemV;
@@ -46,11 +47,36 @@ public class ItemRegisterScript : MonoBehaviour
         ItemName = infItemName.text;
 
         //テキストを数値に変換して代入
-        ItemV = int.Parse(infItemV.text);
-        ItemY = int.Parse(infItemY.text);
-        ItemM = int.Parse(infItemM.text);
-        ItemD = int.Parse(infItemD.text);
-        ItemND = int.Parse(infItemND.text);
+        if(infItemV != null){
+            ItemV = int.Parse(infItemV.text);
+        }else{
+            ItemV = 1;
+        }
+
+        if(infItemY != null){
+            ItemY = int.Parse(infItemY.text);
+        }else{
+            ItemY = time.nowY;
+        }
+
+        if(infItemM != null){
+            ItemM = int.Parse(infItemM.text);
+        }else{
+            ItemM = time.nowM;
+        }
+
+        if(infItemD != null){
+            ItemD = int.Parse(infItemD.text);
+        }else{
+            ItemD = time.nowD;
+        }
+
+        if(infItemND != null){
+            ItemND = int.Parse(infItemND.text);
+        }else{
+            ItemND = 0;
+        }
+
     }
 
     //代入した値を別のスクリプトで使うための設定
