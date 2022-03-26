@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MemoScene.unity
     guid: 107fd706adabde74abd7f821b4420381
   - enabled: 1
-    path: Assets/Scenes/NewMemoScene.unity
+    path: Assets/Scenes/NewMemoScene 1.unity
     guid: 80d190fb6f93eac4f87b1d90efa5df8f
   - enabled: 1
     path: Assets/Scenes/RegisterScene.unity

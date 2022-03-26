@@ -40,7 +40,6 @@ public class Time_Manager : MonoBehaviour
     }
 
     public void SettingPush(List<ItemData> itemDatas){
-        
         //　Androidチャンネルの登録
         //LocalPushNotification.RegisterChannel(引数1,引数２,引数３);
         //引数１ Androidで使用するチャンネルID なんでもいい LocalPushNotification.AddSchedule()で使用する
@@ -62,13 +61,13 @@ public class Time_Manager : MonoBehaviour
 
 
         List<ItemData> SetItemList = itemDatas;
-        SetItemList.Sort((a,b) => (a.ItemY*365 + a.ItemM*31 + a.ItemD) - (b.ItemY*365 + b.ItemM*31 + b.ItemD));
+        SetItemList.Sort((a,b) => (b.ItemY*365 + b.ItemM*31 + b.ItemD) - (a.ItemY*365 + a.ItemM*31 + a.ItemD));
 
         int ItemCount = 0;
 
         while(SetItemList.Count > 0){
             if(nowY < SetItemList[0].ItemY || nowY == SetItemList[0].ItemY && nowM < SetItemList[0].ItemM || nowY == SetItemList[0].ItemY && nowM == SetItemList[0].ItemM && nowD < SetItemList[0].ItemD){
-                ItemCount += SetItemList[0].ItemV;
+                ItemCount ++;
                 int i = 1;
                 while(i < SetItemList.Count){
                     if (SetItemList[i].ItemY == SetItemList[0].ItemY && SetItemList[i].ItemM == SetItemList[0].ItemM && SetItemList[i].ItemD == SetItemList[0].ItemD){
@@ -79,7 +78,7 @@ public class Time_Manager : MonoBehaviour
                     }else{
                         i++;
                     }
-                    ItemCount += SetItemList[i].ItemV;
+                    ItemCount ++;
                 }
             }
             if(ItemCount > 0){
