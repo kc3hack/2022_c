@@ -3035,7 +3035,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1405950049
@@ -3767,6 +3767,8 @@ GameObject:
   - component: {fileID: 1938576317}
   - component: {fileID: 1938576318}
   - component: {fileID: 1938576319}
+  - component: {fileID: 1938576320}
+  - component: {fileID: 1938576321}
   m_Layer: 5
   m_Name: RegisterButton
   m_TagString: Untagged
@@ -3948,6 +3950,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8231a12c0b4659b4c9a0a73419cce114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  save: {fileID: 1938576320}
+--- !u!114 &1938576320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938576312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e09c9218d9cc348bee1232484e8bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  push: {fileID: 1938576321}
+--- !u!114 &1938576321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938576312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee8c1ce30a95a943bbd830dd4024708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &1985275590
 GameObject:
   m_ObjectHideFlags: 0
