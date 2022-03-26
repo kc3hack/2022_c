@@ -15,8 +15,11 @@ public class ItemData
     public int ItemND;
 }
 
+
 public class ItemSaveJsonScript : MonoBehaviour
 {
+    public SaveJson save;
+
     //登録ボタンを押したときの処理
     public void select()
     {
@@ -27,5 +30,6 @@ public class ItemSaveJsonScript : MonoBehaviour
         itemDataWrap.ItemM = ItemRegisterScript.RegIM();
         itemDataWrap.ItemD = ItemRegisterScript.RegID();
         itemDataWrap.ItemND = ItemRegisterScript.RegIND();
+        save.Save(itemDataWrap);
     }
 }
