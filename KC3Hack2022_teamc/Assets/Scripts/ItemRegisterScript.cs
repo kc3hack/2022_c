@@ -41,31 +41,31 @@ public class ItemRegisterScript : MonoBehaviour
         ItemName = infItemName.text;
 
         //テキストを数値に変換して代入
-        if(infItemV != null){
+        if(infItemV.text != ""){
             ItemV = int.Parse(infItemV.text);
         }else{
             ItemV = 1;
         }
 
-        if(infItemY != null){
+        if(infItemY.text != ""){
             ItemY = int.Parse(infItemY.text);
         }else{
             ItemY = time.nowY;
         }
 
-        if(infItemM != null){
+        if(infItemM.text != ""){
             ItemM = int.Parse(infItemM.text);
         }else{
             ItemM = time.nowM;
         }
 
-        if(infItemD != null){
+        if(infItemD.text != ""){
             ItemD = int.Parse(infItemD.text);
         }else{
             ItemD = time.nowD;
         }
 
-        if(infItemND != null){
+        if(infItemND.text != ""){
             ItemND = int.Parse(infItemND.text);
         }else{
             ItemND = 0;

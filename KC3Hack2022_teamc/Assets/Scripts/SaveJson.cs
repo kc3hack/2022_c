@@ -108,7 +108,7 @@ public class SaveJson : MonoBehaviour
     public void PopM(int id){
         LoadM();
         saveMemoData.memoDatas.RemoveAt(id);
-        Save(null);
+        SaveM(null);
     }
 
 }
