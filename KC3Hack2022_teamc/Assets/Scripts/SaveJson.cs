@@ -12,17 +12,29 @@ public class ItemDataList{
     }
 }
 
+[Serializable]
+public class MemoDataList{
+    public List<MemoData> memoDatas;
+    public MemoDataList(){
+        memoDatas = new List<MemoData>();
+    }
+}
+
 public class SaveJson : MonoBehaviour
 {
     public Time_Manager push;
     string filePath;
+    string filePathM;
     ItemDataList saveItamData;
+    MemoDataList saveMemoData;
 
     void Awake()
     {
         //変数の初期化処理を行う
         filePath = Application.persistentDataPath + "/" + ".savedata.json"; 
+        filePathM = Application.persistentDataPath + "/" + ".savedataM.json"; 
         Load();
+        LoadM();
     }
 
     //ItemDataを引数に呼び出すとListを更新しJsonに登録します
@@ -37,12 +49,16 @@ public class SaveJson : MonoBehaviour
         push.SettingPush(saveItamData.itemDatas);
     }
 
-    public void Pop(int id, int value){
-        Load();
-        saveItamData.itemDatas[id].ItemV -= value;
-        if(saveItamData.itemDatas[id].ItemV <= 0){saveItamData.itemDatas.RemoveAt(id);}
-        Save(null);
+    public void SaveM(MemoData memo)
+    {
+        if(memo != null){saveMemoData.memoDatas.Add(memo);}
+        
+        string json = JsonUtility.ToJson(saveMemoData);
+        StreamWriter streamWriter = new StreamWriter(filePathM);
+        streamWriter.Write(json); streamWriter.Flush();
+        streamWriter.Close();
     }
+
 
 
     //JsonからロードしてItemDataのListを返す
@@ -63,6 +79,36 @@ public class SaveJson : MonoBehaviour
             return new List<ItemData>();
         }
         
+    }
+
+    public List<MemoData> LoadM()
+    { 
+        if (File.Exists(filePathM))
+        {
+            StreamReader streamReader;
+            streamReader = new StreamReader(filePathM);
+            string data = streamReader.ReadToEnd();
+            streamReader.Close();
+            saveMemoData = JsonUtility.FromJson<MemoDataList>(data);
+            return saveMemoData.memoDatas;
+        }
+        else{
+            saveMemoData = new MemoDataList();
+            return new List<MemoData>();
+        }
+        
+    }
+
+    public void Pop(int id, int value){
+        Load();
+        saveItamData.itemDatas[id].ItemV -= value;
+        if(saveItamData.itemDatas[id].ItemV <= 0){saveItamData.itemDatas.RemoveAt(id);}
+        Save(null);
+    }
+    public void PopM(int id){
+        LoadM();
+        saveMemoData.memoDatas.RemoveAt(id);
+        Save(null);
     }
 
 }

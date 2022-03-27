@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 1252804161}
   - component: {fileID: 1252804160}
   m_Layer: 5
-  m_Name: TitleText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -622,8 +622,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1309577993}
-        m_TargetAssemblyTypeName: ToListSceneScript, Assembly-CSharp
+        m_TargetAssemblyTypeName: ToMemoListSceneScript, Assembly-CSharp
         m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1336495190}
+        m_TargetAssemblyTypeName: MemoManager, Assembly-CSharp
+        m_MethodName: Use
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -680,7 +692,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1309577988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b279d0750145f324792872da54c88cee, type: 3}
+  m_Script: {fileID: 11500000, guid: f65be1cc7b34b11478791f3f93ed313c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1336495185
@@ -694,6 +706,8 @@ GameObject:
   - component: {fileID: 1336495188}
   - component: {fileID: 1336495187}
   - component: {fileID: 1336495186}
+  - component: {fileID: 1336495190}
+  - component: {fileID: 1336495189}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -766,6 +780,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1336495189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336495185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e09c9218d9cc348bee1232484e8bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  push: {fileID: 0}
+--- !u!114 &1336495190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336495185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77faaa855e0e49344933312d5b9afccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  memoid: 0
+  save: {fileID: 1336495189}
+  titletext: {fileID: 1966338148}
+  memotext: {fileID: 1555199899}
 --- !u!1 &1405950047
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +874,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1405950049
@@ -1553,7 +1596,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1305201705}
   m_HandleRect: {fileID: 1305201704}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

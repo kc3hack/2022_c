@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ToItemSceneScript : MonoBehaviour
 {
-    public int itemnom;
+    public int itemid;
     public void Select()
     {
+        transform.parent = null;
+        DontDestroyOnLoad(this.gameObject);
         SceneManager.LoadScene("Itemscene");
     }
+
 }

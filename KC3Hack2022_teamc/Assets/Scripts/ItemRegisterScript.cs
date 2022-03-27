@@ -35,12 +35,6 @@ public class ItemRegisterScript : MonoBehaviour
         infItemND = GameObject.Find("IFNotiDay").GetComponent<InputField>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void GetInformation()
     {
         //取得したテキストを代入

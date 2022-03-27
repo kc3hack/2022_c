@@ -7,10 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
-    guid: 788ef3e5468d63749b55a6ada642e83b
+    guid: 0e14154b8ba1d494595903cc6a0fe63b
   - enabled: 1
     path: Assets/Scenes/ListScene1.unity
     guid: 8140a89905cd383488f2e57f6bdd93ed
+  - enabled: 1
+    path: Assets/Scenes/RegisterScene.unity
+    guid: b668e2b4820e224479505a8fa9ea168f
   - enabled: 1
     path: Assets/Scenes/ItemScene.unity
     guid: a1ca051a3504e8444aa8c087bc0eda00
@@ -18,12 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MemoListScene.unity
     guid: 50926c1372dfe7549b8ce755b8172f61
   - enabled: 1
+    path: Assets/Scenes/NewMemoScene.unity
+    guid: 90d8f681c0aa0ac408e096cb53fa597b
+  - enabled: 1
     path: Assets/Scenes/MemoScene.unity
     guid: 107fd706adabde74abd7f821b4420381
-  - enabled: 1
-    path: Assets/Scenes/NewMemoScene 1.unity
-    guid: 80d190fb6f93eac4f87b1d90efa5df8f
-  - enabled: 1
-    path: Assets/Scenes/RegisterScene.unity
-    guid: ca0ef8b1c0b3e5e45ba2d32f7c9abfee
   m_configObjects: {}
