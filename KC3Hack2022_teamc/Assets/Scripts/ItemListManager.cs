@@ -15,10 +15,13 @@ public class ItemListManager : MonoBehaviour
     void Start()
     {
         List<ItemData> list = save.Load();
+        int id = 0;
         foreach(ItemData item in list){
             GameObject _item = Instantiate (itemPrefab, this.transform);
             _item.transform.Find("BackgroundImage/NameText").GetComponent<Text>().text = item.ItemName;
             _item.transform.Find("BackgroundImage/DateText").GetComponent<Text>().text = item.ItemY + "年" + item.ItemM + "月" + item.ItemD + "日";
+            _item.GetComponent<ToItemSceneScript>().itemid = id;
+            id++;
         }
     }
 }
